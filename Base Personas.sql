@@ -17,13 +17,15 @@ CREATE TABLE IF NOT EXISTS `persona` (
   `nombre` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla personas.persona: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla personas.persona: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
 INSERT INTO `persona` (`id`, `nombre`, `email`) VALUES
 	(1, 'david', 'david.gotez@gmail.com'),
-	(2, 'sapo', '3118375107');
+	(2, 'mario', 'mario@gmail.com'),
+	(3, 'carlos', 'carlos@gmail.com'),
+	(4, 'oscar', 'oscar._gotez@hotmail.com');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
