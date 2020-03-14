@@ -1,44 +1,39 @@
+<?php 
+    include('includes/db.php');
+
+    $sql = "select * from persona";
+    
+    $result = DB::query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Listado de Personas</title>
 </head>
 <body>
-    <form>
-    <table >
-        <tr>
-            <td>id</td>
-            <td>nombre</td>
-            <td>email</td>
-        </tr>
-        <tr >
-            <?php
-            $host = "localhost";
-            $user = "root";
-            $password = "";
-            $db = "personas";
-            $con = new mysqli($host, $user, $password, $db);
-            $query="select * from persona";
-            $ingreso=$con->query($query);
-            while($imp=mysqli_fetch_array($ingreso)){
-            ?>
-            <td><?php echo $imp['id']?></td>
-            <td><?php echo $imp['nombre']?></td>
-            <td><?php echo $imp['email']?></td>
-        </tr>
-            <?php 
-            }
-            
-            ?>
-    </table>
-    </form>
-    <form action="crear.php">
     <div>
-        <br>
-        <button type="submit">Agregar</button>
+        Listado de Personas <a href="crear.php">Nuevo</a>
     </div>
-    </form>
+        <table style="width: 100%; border: 1px solid black">
+            <tr>
+                <td>Nombres</td>
+                <td>Email</td>
+                <td>Acciones</td>
+            </tr>
+            
+            <?php while($mostrar=mysqli_fetch_array($result)){ ?>
+                <tr>
+                    <td><?= $mostrar['nombre'] ?></td>
+                    <td><?= $mostrar['email'] ?></td>
+                    <td>
+                        <a href="editar.php?id=<?= $mostrar['id'] ?>">Editar</a>
+                        <a href="eliminar.php?id=<?= $mostrar['id'] ?>">Eliminar</a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </table>
 </body>
 </html>
